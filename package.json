@@ -1,7 +1,7 @@
 {
   "name": "csv2dns",
   "version": "1.0.0",
-  "description": "converts csv to DNS zone file",
+  "description": "converts CSV to DNS zone file",
   "main": "index.js",
   "bin": {
     "csv2dns": "index.js"
@@ -9,6 +9,15 @@
   "type": "module",
   "author": "zurgul@gmail.com",
   "license": "MIT",
+  "keywords": [
+    "csv2dns",
+    "csv2bind",
+    "csv2zone",
+    "DNS",
+    "BIND",
+    "DNS zone",
+    "convert csv to dns zone"
+  ],
   "dependencies": {
     "csv-parse": "^5.4.0"
   },

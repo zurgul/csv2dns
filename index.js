@@ -3,7 +3,7 @@ import { parse } from 'csv-parse';
 import fs from 'fs';
 
 const DEFAULT_INPUT = 'dns.csv';
-const DEFAULT_OUTPUT = 'dns.txt';
+const DEFAULT_OUTPUT = 'dns.zone';
 const DEFAULT_TTL = 300;
 
 const parser = parse({ delimiter: ',', columns: true, skip_empty_lines: true });
