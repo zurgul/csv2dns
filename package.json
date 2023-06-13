@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "converts csv to DNS zone file",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "csv2dns": "index.js"
   },
   "type": "module",
   "author": "zurgul@gmail.com",
   "license": "MIT",
   "dependencies": {
     "csv-parse": "^5.4.0"
+  },
+  "engines": {
+    "npm": ">=8.19.2",
+    "node": ">=16.18.0"
   }
 }
