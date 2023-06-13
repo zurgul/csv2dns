@@ -1,0 +1,15 @@
+{
+  "name": "csv2dns",
+  "version": "1.0.0",
+  "description": "converts csv to DNS zone file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "zurgul@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "csv-parse": "^5.4.0"
+  }
+}
