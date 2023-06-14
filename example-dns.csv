@@ -1,0 +1,6 @@
+Type,Host,Value,TTL,Priority
+A,example.com,10.20.0.1,300,
+CNAME,www.example.com,example.com,300,
+MX,example.com,mail2.example.com,3600,5
+MX,example.com,mail1.example.com,3600,1
+TXT,example.com,t=1f; domain-verification=hj1qZuG6pig0qvHpkmCy3medYaJ,300,

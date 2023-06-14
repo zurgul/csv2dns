@@ -3,11 +3,11 @@ import { parse } from 'csv-parse';
 import fs from 'fs';
 
 const DEFAULT_INPUT = 'dns.csv';
-const DEFAULT_OUTPUT = 'dns.zone';
+const DEFAULT_OUTPUT = 'dns.zone.txt';
 const DEFAULT_TTL = 300;
 
 const parser = parse({ delimiter: ',', columns: true, skip_empty_lines: true });
-const inputFile = process.argv?.[2] || DEFAULT_INPUT;
+const inputFile = DEFAULT_INPUT;
 const records = [];
 const skipped = [];
 
@@ -17,7 +17,7 @@ fs.createReadStream(inputFile)
   .on('end', process);
 
 function process() {
-  records.sort((a, b) => (a.Host < b.Host ? -1 : a.Host > b.Host ? 1 : 0)); // optional sort
+  records.sort((a, b) => (a.Type < b.Type ? -1 : a.Type > b.Type ? 1 : 0)); // optional sort
 
   let outRecord, skippedRecord;
   const outputFile = fs.createWriteStream(DEFAULT_OUTPUT);
@@ -38,7 +38,7 @@ function process() {
     }
 
     normalize(record);
-    outRecord = `${record.Host}.\t${record.TTL}\t${record.Type}\t${record.Priority || ''}\t${record.Value}`;
+    outRecord = `${record.Host}\t${record.TTL}\tIN\t${record.Type}\t${record.Priority || ''}\t${record.Value}`;
 
     outputFile.write(outRecord + '\n');
     console.log('[ADD]\t', outRecord);
@@ -50,6 +50,10 @@ function process() {
 }
 
 function normalize(record) {
+  record.Host += '.';
+  if(['CNAME', 'MX'].includes(record.Type)) {
+    record.Value += '.'
+  }
   if (!record.TTL) {
     record.TTL = DEFAULT_TTL;
   }
